@@ -5,10 +5,22 @@ import java.util.Arrays;
 import ua.univer.figures.Figure;
 import ua.univer.figures.base.Line;
 import ua.univer.figures.base.Point;
+import ua.univer.figures.color.ColorAble;
 import ua.univer.figures.color.ColorLine;
 import ua.univer.figures.color.ColorPoint;
 import ua.univer.figures.color.ColorPointAgr;
 import ua.univer.figures.poly.PolyPointsDynamic;
+import ua.univer.figures.util.FigureFactory;
+
+class Flower implements ColorAble {
+
+	@Override
+	public int getColor() {
+		// TODO Auto-generated method stub
+		return 777;
+	}
+	
+}
 
 public class Program {
 
@@ -32,15 +44,41 @@ public class Program {
 		ColorLine cl1= new ColorLine(p, p1, 555555)	;
 		System.out.println(cl1);
 		System.out.println("****************************");
-		Figure[] masObj = new Figure[4];
+		Figure[] masObj = new FigureFactory.getListFigure(10);
 		masObj[0]= p;
 		masObj[1]= cp1;
 		masObj[2]= l1;
 		masObj[3]= cl1;
 	//	masObj[4]= new Figure();
+		
+		Point[] masPoint = new Point[4];            //с общего масива фигур получаем масив точек
+		int ipoint = 0 ;
+		
+		ColorAble [] masColor = new ColorAble[4];
+		int icolor = 0 ;
+		
+		masColor[icolor++]=new Flower() ;
+		masColor[icolor++]=() ->42 ;
+		
+		
 		for (int i = 0; i < masObj.length; i++) {
-			System.out.println(masObj[i]);
+			if(masObj[i] instanceof ColorAble) {
+				masColor[icolor]=(ColorAble) masObj[i];
+			}
+			if(masObj[i] instanceof Point) {
+			Point tp = (Point)masObj[i];
+			masPoint[ipoint]=tp;
+			ipoint++;
+			System.out.println(tp.getX());
+			}
+			
+			for (int j = 0; j < masColor.length; j++) {
+				System.out.println(masColor);
+			}
 		}
+		
+		
+		
 		PolyPointsDynamic poly = new PolyPointsDynamic();
 		
 		poly.add(new Point(5,9));
@@ -55,7 +93,7 @@ public class Program {
 	//		System.out.println(poly.get(i));
 	//	}
 		
-		poly.print(); 
+		//poly.print(); 
 	
 	}
 

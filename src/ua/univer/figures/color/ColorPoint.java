@@ -2,7 +2,7 @@ package ua.univer.figures.color;
 
 import ua.univer.figures.base.Point;
 
-public class ColorPoint extends Point{
+public class ColorPoint extends Point implements ColorAble{
 	private int color;
 
 	public ColorPoint(int x, int y, int color) {
