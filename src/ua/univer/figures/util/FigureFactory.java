@@ -17,7 +17,7 @@ public class FigureFactory {
 	public static Figure randFigure() {
 		return getFigure((int)(Math.random()*4));
 	}
-	public static Figure[] getListFigure(int n) {
+	public static Figure[] getListFigures(int n) {
 		Figure [] masFig = new Figure [n];
 		for (int i = 0; i < masFig.length; i++) {
 			masFig[i]=randFigure();

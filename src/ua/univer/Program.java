@@ -44,17 +44,14 @@ public class Program {
 		ColorLine cl1= new ColorLine(p, p1, 555555)	;
 		System.out.println(cl1);
 		System.out.println("****************************");
-		Figure[] masObj = new FigureFactory.getListFigure(10);
-		masObj[0]= p;
-		masObj[1]= cp1;
-		masObj[2]= l1;
-		masObj[3]= cl1;
-	//	masObj[4]= new Figure();
+		Figure[] masObj = FigureFactory.getListFigures(80);
+		System.out.println(Arrays.toString(masObj));
+		System.out.println("****************************");
 		
-		Point[] masPoint = new Point[4];            //с общего масива фигур получаем масив точек
+		Point[] masPoint = new Point[masObj.length];            //с общего масива фигур получаем масив точек
 		int ipoint = 0 ;
 		
-		ColorAble [] masColor = new ColorAble[4];
+		ColorAble [] masColor = new ColorAble[masObj.length];
 		int icolor = 0 ;
 		
 		masColor[icolor++]=new Flower() ;
@@ -62,24 +59,22 @@ public class Program {
 		
 		
 		for (int i = 0; i < masObj.length; i++) {
-			if(masObj[i] instanceof ColorAble) {
-				masColor[icolor]=(ColorAble) masObj[i];
+			if(masObj[i] instanceof ColorAble){
+				masColor[icolor++]= (ColorAble) masObj[i];
 			}
-			if(masObj[i] instanceof Point) {
-			Point tp = (Point)masObj[i];
+			if(masObj[i] instanceof Point){
+			Point tp =((Point)masObj[i]);
 			masPoint[ipoint]=tp;
 			ipoint++;
-			System.out.println(tp.getX());
-			}
-			
-			for (int j = 0; j < masColor.length; j++) {
-				System.out.println(masColor);
-			}
+			System.out.println(tp.getX());}
 		}
-		
-		
-		
+		System.out.println("********************Color");
+		for (int i = 0; i < masColor.length; i++) {
+		if(masColor[i]!=null)	System.out.println(masColor[i].getColor());
+		}
+		System.out.println("********************");
 		PolyPointsDynamic poly = new PolyPointsDynamic();
+		
 		
 		poly.add(new Point(5,9));
 		poly.add(new Point(6,5));
@@ -96,5 +91,5 @@ public class Program {
 		//poly.print(); 
 	
 	}
-
+	
 }
